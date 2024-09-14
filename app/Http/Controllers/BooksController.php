@@ -9,6 +9,8 @@ class BooksController extends Controller
 {
     public function index(){
         $books = Books::all();
-        return view('index', compact('books'));
+        $totalBooks = $books->count();
+        $totalHarga = $books->sum('harga');
+        return view('index', compact('books', 'totalBooks', 'totalHarga'));
     }
 }

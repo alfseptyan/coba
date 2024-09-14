@@ -9,6 +9,7 @@
 </head>
 <body class="bg-gray-100 p-8">
     <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- Tabel Buku -->
         <table class="min-w-full table-auto border-collapse">
             <thead class="bg-gray-200">
                 <tr>
@@ -26,12 +27,18 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $book->id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $book->title }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $book->author }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ "Rp" . number_format($book->harga, 2, '.', '.') }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ "Rp" . number_format($book->harga, 2, ',', '.') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $book->tanggal_terbit }}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Bagian untuk menampilkan total buku dan total harga -->
+        <div class="p-6 bg-gray-100">
+            <p class="text-lg font-semibold text-gray-700">Total Buku: {{ $totalBooks }}</p>
+            <p class="text-lg font-semibold text-gray-700">Total Harga Buku: Rp{{ number_format($totalHarga, 2, ',', '.') }}</p>
+        </div>
     </div>
 </body>
 </html>
