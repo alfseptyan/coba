@@ -9,7 +9,12 @@
 </head>
 <body class="bg-gray-100 p-8">
     <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-        <!-- Tabel Buku -->
+        <!-- Tombol Create -->
+        <div class="p-6">
+            <a href="{{ route('create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Create
+            </a>
+        </div>
         <table class="min-w-full table-auto border-collapse">
             <thead class="bg-gray-200">
                 <tr>
@@ -29,6 +34,16 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $book->author }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ "Rp" . number_format($book->harga, 2, ',', '.') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $book->tanggal_terbit }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <!-- Form untuk Delete -->
+                        <form action="{{ route('destroy', $book->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-600 hover:text-red-800">Delete</button>
+                        </form>
+                        <!-- Tombol Edit -->
+                        <a href="{{ route('edit', $book->id) }}" class="text-blue-600 hover:text-blue-800">Edit</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
