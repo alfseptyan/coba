@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BooksController extends Controller
 {
     public function index(){
-        $books = Books::all();
+        $books = Books::all()->sortByDesc('id');
         $totalBooks = $books->count();
         $totalHarga = $books->sum('harga');
         return view('index', compact('books', 'totalBooks', 'totalHarga'));
