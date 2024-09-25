@@ -51,7 +51,7 @@
 
         <!-- Bagian untuk menampilkan total buku dan total harga -->
         <div class="p-6 bg-gray-100">
-            <p class="text-lg font-semibold text-gray-700">Total Buku: {{ $totalBooks }}</p>
+            <p class="text-lg font-semibold text-gray-700">Total Buku: {{ $totalBooks}}</p>
             <p class="text-lg font-semibold text-gray-700">Total Harga Buku: Rp{{ number_format($totalHarga, 2, ',', '.') }}</p>
         </div>
     </div>

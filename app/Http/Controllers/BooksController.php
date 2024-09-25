@@ -18,7 +18,7 @@ class BooksController extends Controller
         return view('create');
     }
     public function store(Request $request){
-        $books = new books;
+        $books = new Books;
         $books->title = $request->title;
         $books->author = $request->author;
         $books->harga = $request->harga;
